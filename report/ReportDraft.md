@@ -1,6 +1,9 @@
 David Alexander and Ding-Yi Zhang
+
 Introduction to Programming in Science and Engineering
+
 Profs Bhatnagar, Briere and Sumner
+
 24 April 2019
 
 Term Project Report – Draft
