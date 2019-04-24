@@ -8,6 +8,7 @@ public class Verlet {
 
     public static void main (String[] args) throws IOException {
         File file = new File("/Users/DY/java/Term Project/position.data");
+        // File file = new File("your path here")
         FileWriter writer = new FileWriter(file);
 
         int n = 20;      // number of bodies
