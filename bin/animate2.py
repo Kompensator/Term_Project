@@ -1,7 +1,6 @@
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 import matplotlib.animation as animation
-import time
 
 # settings
 global n, number_of_dots

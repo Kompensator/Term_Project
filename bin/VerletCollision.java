@@ -9,6 +9,7 @@ public class VerletCollision {
 
     public static void main (String[] args) throws IOException {
         File file = new File("/Users/DY/java/Term Project/position2.data");
+        // File file = new File("your path here")
         FileWriter writer = new FileWriter(file);
 
         int n = 100;      // number of bodies
