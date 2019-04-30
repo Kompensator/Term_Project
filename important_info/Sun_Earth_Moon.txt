@@ -1,0 +1,26 @@
+Sun
+x = 0
+y = 0
+vx = 0
+vy = 0
+mass = 1.989x10^30 kg 
+radius = (doesnt matter, bigger than earth)
+name = Sun
+
+Earth
+x = 149597870700 m
+y = 0
+vx = 0
+vy =  29741 m/s
+mass = 5.97x10^24 kg
+radius = (doesnt matter, smaller than Sun but bigger than Moon)
+name = Earth
+
+Moon
+x = 149982270700 m 
+y = 0
+vx = 0
+vy = 1018 m/s
+mass = 7.34x10^22 kg
+radius = (doesnt matter, smaller than Earth)
+name = Moon
