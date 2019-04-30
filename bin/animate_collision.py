@@ -6,7 +6,7 @@ import time
 # settings
 global n, number_of_dots
 n = 100
-data_file = "position2.data"
+data_file = "testdata.data"
 total_steps = int(1e7//7200)
 number_of_dots = 100
 file = open(data_file, "r")
