@@ -5,7 +5,7 @@ import time
 
 # settings
 global n, number_of_dots
-n = 100
+n = 3
 data_file = "testdata.data"
 total_steps = int(1e7//7200)
 number_of_dots = 100
