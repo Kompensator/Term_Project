@@ -7,7 +7,7 @@ import time
 global n, number_of_dots
 n = 3
 data_file = "testdata.data"
-total_steps = int(1e7//7200)
+total_steps = int(1e8//7200)
 number_of_dots = 100
 file = open(data_file, "r")
 
@@ -18,8 +18,8 @@ file = open(data_file, "r")
 # setting up fig and axis
 fig, ax = plt.subplots()
 ax.set_facecolor('xkcd:black')
-ax.set_xlim(-2e12, 2e12)
-ax.set_ylim(-2e12, 2e12)
+ax.set_xlim(-2e11, 2e11)
+ax.set_ylim(-2e11, 2e11)
 
 
 class body():
