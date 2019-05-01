@@ -8,9 +8,10 @@ public class SunEarthMoon {
 	public static final int dt = 7200;
 
     public static void main (String[] args) throws IOException {
-        // File file = new File("/Users/DY/java/Term Project/position2.data");
-		File file = new File("c://Users//alexd//Documents//School//Winter2019//CompSci//TermProject//Term_Project//bin//testdata.data");
-        // File file = new File("your path here");
+        //File file = new File("/Users/DY/java/Term Project/position2.data"); //dings laptop
+		//File file = new File("c://Users//alexd//Documents//School//Winter2019//CompSci//TermProject//Term_Project//bin//testdata.data"); //davids laptop
+        File file = new File("h://CompSci//Term_Project//bin//testdata.data"); //davids h drive
+		//File file = new File("your path here");
 		
         FileWriter writer = new FileWriter(file);
 
@@ -26,7 +27,7 @@ public class SunEarthMoon {
         } */
         bodies[0] = new Body(1.496e11, 0, 0, 29741, 5.97e24, 1e4, "Earth");
         bodies[1] = new Body(0, 0, 0, 0, 1.989e30, 1e7, "Sun");
-		bodies[2] = new Body(1.5e11, 0, 0, 30759, 7.34e22, 1e2, "Moon");
+		bodies[2] = new Body(1.496e11, 4e8, -1081, 29741, 7.34e22, 1e2, "Moon");
 
         for (int step = 0; step < totalSteps; step++) {
             for (int i = 0; i < n; i ++) {
