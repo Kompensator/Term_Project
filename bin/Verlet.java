@@ -95,8 +95,10 @@ class Body {
             }
 
 			if (otherBody.name != this.name){
-				double thisxplus = this.x + this.vx * dt; double thisyplus = this.y + this.vy * dt;
-				double otherxplus = otherBody.x + otherBody.vx * dt; double otheryplus = otherBody.y + otherBody.vy * dt;
+                double thisxplus = this.x + this.vx * dt;
+                double thisyplus = this.y + this.vy * dt;
+                double otherxplus = otherBody.x + otherBody.vx * dt;
+                double otheryplus = otherBody.y + otherBody.vy * dt;
 
 				double r = Math.sqrt(Math.pow((thisxplus - otherxplus),2) + Math.pow((thisyplus - otheryplus),2));
                 double temp_acc;
