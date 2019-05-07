@@ -5,9 +5,9 @@ import time
 
 # settings
 global n, number_of_dots
-n = 3
+n = 3 #number of bodies
 data_file = "testdata.data"
-total_steps = int(1e8//7200)
+total_steps = int(1e8/900)
 number_of_dots = 100
 file = open(data_file, "r")
 

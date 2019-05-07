@@ -20,7 +20,7 @@ Moon
 x = 149982270700 m 
 y = 0
 vx = 0
-vy = 1018 m/s
+vy = 1018 m/s (rel to earth)  m/s (rel to Sun)
 mass = 7.34x10^22 kg
 radius = (doesnt matter, smaller than Earth)
 name = Moon

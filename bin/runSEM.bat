@@ -3,6 +3,7 @@
 echo compiling
 javac -d . Body.java
 javac SunEarthMoon.java
+echo compiled
 
 echo running
 java SunEarthMoon
