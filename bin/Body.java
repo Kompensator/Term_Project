@@ -26,7 +26,7 @@ public class Body {
     }
 
     public boolean collisionDetection(Body body) {
-        /* returns true if the body is collided with another body
+        /** returns true if the body is collided with another body
         */
         boolean collision = false;      // default: no collision
         if (body.name != this.name) {
@@ -40,7 +40,7 @@ public class Body {
     }
 
     public void collisionPhsysics (Body otherBody) {
-        /* handles collision phsics
+        /** handles collision phsics
         modifies the properties the two colliding bodies
         deprecates the ligher one
         */
@@ -77,7 +77,7 @@ public class Body {
     }
 
     public void updateAcceleration (Body[] bodies) {
-        /* updates ax and ay of the body with respect to other bodies
+        /** updates ax and ay of the body with respect to other bodies
         */
 
         boolean collision;
@@ -135,7 +135,7 @@ public class Body {
     }
 
     public void updateVelocity (Body[] bodies, int dt) {
-        /* computes the updated velocity with ax and ay
+        /** computes the updated velocity with ax and ay
         */
         this.updateAcceleration(bodies);
         this.vx += 0.5 * (this.ax + this.axplusone) * dt;
@@ -143,7 +143,7 @@ public class Body {
     }
 
     public void calculatePosition(Body[] bodies, int dt) {
-        /* calculates the new positions and stores them in temp_x and temp_y
+        /**   calculates the new positions and stores them in temp_x and temp_y
         */
         this.updateVelocity(bodies, dt);
         this.temp_x += this.vx * dt + 0.5 * this.ax * dt * dt;
@@ -151,9 +151,9 @@ public class Body {
     }
 
     public void updatePosition() {
-        // this method should be called after calling calculatePosition
-        // replaces position with temporary values
-		// clear all acceleration
+        /** this method should be called after calling calculatePosition
+        replaces position with temporary values
+		clear all acceleration */
 
         this.x = this.temp_x;
         this.y = this.temp_y;
