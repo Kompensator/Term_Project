@@ -1,14 +1,21 @@
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 import matplotlib.animation as animation
-import time
+
 
 # settings
 global n, number_of_dots
-n = 3 #number of bodies
+
 data_file = "testdata.data"
-total_steps = int(1e8/900)
+cfg_file = "sim.cfg"
+cfg = open(cfg_file, "r")
+
+# read settings fro sim.cfg
+n = int(cfg.readline())
+total_steps = int(cfg.readline())
 number_of_dots = 100
+# spread determines the bound of the animation
+spread = float(cfg.readline()) * 1.25
 file = open(data_file, "r")
 
 # trying to write the animation to a file
@@ -18,8 +25,8 @@ file = open(data_file, "r")
 # setting up fig and axis
 fig, ax = plt.subplots()
 ax.set_facecolor('xkcd:black')
-ax.set_xlim(-2e11, 2e11)
-ax.set_ylim(-2e11, 2e11)
+ax.set_xlim(-spread, spread)
+ax.set_ylim(-spread, spread)
 
 
 class body():
@@ -30,11 +37,12 @@ class body():
 
 def update(frame):
     trail_x, trail_y = [], []
-    # n = 5
-    # number_of_dots = 500
+
     for i in range(n):
         x = bodies[i].x[frame]
         y = bodies[i].y[frame]
+
+        # merge handling
         if not (x == 0 and y == 0):
             animated_bodies[i].set_data(x,y)
         else:

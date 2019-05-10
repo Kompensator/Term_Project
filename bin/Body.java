@@ -1,9 +1,13 @@
 public class Body {
-    // Attributes: x, y, vx, vy, ax, ay, mass, radius
+    /**
+    Ressource for Verlet and VerletCollision
+    */
     public double x, y, mass, vx, vy, ax, ay, axplusone, ayplusone, radius,temp_x,temp_y;
     public String name;
     public boolean merged;      // for two bodies merging into one
 	public static final int dt = 900;
+    public static final double G = 6.6740831e-11;
+
 
     public Body (double x, double y, double vx, double vy, double mass, double radius, String name) {
         // constructor
@@ -79,7 +83,6 @@ public class Body {
         */
 
         boolean collision;
-        final double G = 6.6740831e-11;
 
         for (int i = 0; i < bodies.length; i ++) {
 
