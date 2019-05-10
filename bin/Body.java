@@ -1,5 +1,3 @@
-package body;
-
 public class Body {
     // Attributes: x, y, vx, vy, ax, ay, mass, radius
     public double x, y, mass, vx, vy, ax, ay, axplusone, ayplusone, radius,temp_x,temp_y;
