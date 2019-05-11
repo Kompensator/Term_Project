@@ -7,18 +7,19 @@ public class VerletCollision {
 	public static final int dt = 7200;
 
     public static void main (String[] args) throws IOException {
-        File file = new File("/Users/DY/Term_Project/bin/testdata.data");
-		// File file = new File("c://Users//alexd//Documents//School//Winter2019//CompSci//TermProject//Term_Project//bin//testdata.data");
-        FileWriter writer = new FileWriter(file);
-
-		File config = new File("/Users/DY/Term_Project/bin/sim.cfg");
-		// File config = new File("your path here");
-		FileWriter cfgWriter = new FileWriter(config);
 
         int n = 100;      // number of bodies
         double simTime = 1e7;
         int totalSteps = (int) Math.round(simTime / dt);
-		double spread = 1.4e12;		// determines the square where the bodies are generated
+        double spread = 1.4e12;		// determines the square where the bodies are generated
+        
+        File file = new File("/Users/DY/Term_Project/bin/testdata.data");               // data file
+		// File file = new File("c://Users//alexd//Documents//School//Winter2019//CompSci//TermProject//Term_Project//bin//testdata.data");
+        FileWriter writer = new FileWriter(file);
+
+		File config = new File("/Users/DY/Term_Project/bin/sim.cfg");                   // config  for animation
+		// File config = new File("your path here");
+		FileWriter cfgWriter = new FileWriter(config);
 
 		// writing config to config file
 		cfgWriter.write(Integer.toString(n) + '\n');

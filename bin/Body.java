@@ -5,7 +5,7 @@ public class Body {
     public double x, y, mass, vx, vy, ax, ay, axplusone, ayplusone, radius,temp_x,temp_y;
     public String name;
     public boolean merged;      // for two bodies merging into one
-	public static final int dt = 900;
+	public static final int dt = 7200;
     public static final double G = 6.6740831e-11;
 
 
