@@ -5,7 +5,7 @@ public class Body {
     public double x, y, mass, vx, vy, ax, ay, axplusone, ayplusone, radius, temp_x, temp_y, euler_x, euler_y;
     public String name;
     public boolean merged;      // for two bodies merging into one
-	public static final int dt = 7200;
+	public static final int dt = 900;
     public static final double G = 6.6740831e-11;
 
 
@@ -142,12 +142,9 @@ public class Body {
     }
 
     public void calculatePosition(Body[] bodies, int dt) {
-<<<<<<< HEAD
         /* calculates the new positions and stores them in temp_x and temp_y
-=======
         /** calculates the new positions and stores them in temp_x and temp_y
          * does NOT directly update x and y
->>>>>>> b6ac3928f61dba49ec605df72844631c8f3f985c
         */
         this.updateVelocity(bodies, dt);
         this.temp_x += this.vx * dt + 0.5 * this.ax * dt * dt;
