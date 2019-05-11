@@ -10,12 +10,12 @@ public class SunEarthMoon {
 	The radius is set to 1 (too small for collision to be detected)
 	*/
 
-	public static final int dt = 900;
+	public static final int dt = 720;
 
     public static void main (String[] args) throws IOException {
         // settings
         int n = 3;      // number of bodies
-        double simTime = 1e9;
+        double simTime = 1e8;
         int totalSteps = (int) Math.round(simTime / dt);
 		double spread = 1.5e11;		// determines the square where the bodies are generated
         

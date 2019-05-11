@@ -36,9 +36,9 @@ class body():
         self.y = []
         self.mass = 0.0
 
+
 def update(frame):
     trail_x, trail_y = [], []
-
     for i in range(n):
         x = bodies[i].x[frame]
         y = bodies[i].y[frame]
@@ -61,7 +61,7 @@ def update(frame):
             trail_y.append(body.y[(frame-number_of_dots):frame])
 
     animated_bodies[n].set_data(trail_x,trail_y)
-
+    print(trail_x)
     return animated_bodies
 
 
@@ -82,16 +82,17 @@ for i in range(total_steps):
             break
 
 # creating aniated objects
-for i in range(n):
-    earth_plot, = plt.plot([],[],color='#0077be',marker='o',markersize=5,animated=True)
-    sun_plot, = plt.plot([],[],color='#ffff00',marker='o',markersize=12,animated=True)
-    moon_plt, = plt.plot([],[],color='#f5f3ce',marker='o',markersize=3,animated=True)
+earth_plot, = plt.plot([],[],color='#0077be',marker='o',markersize=5,animated=True)
+sun_plot, = plt.plot([],[],color='#ffff00',marker='o',markersize=12,animated=True)
+moon_plot, = plt.plot([],[],color='#f5f3ce',marker='o',markersize=3,animated=True)
 
-    animated_bodies = [earth_plot, sun_plot, moon_plt]          # the packing order is important
+animated_bodies = [earth_plot, sun_plot, moon_plot]          # the packing order is important
 
 # creating trail of bodies
 trail, = plt.plot([], [], 'bo', markersize=0.2, animated=True)
 animated_bodies.append(trail)
+
+
 ani = FuncAnimation(fig, update, interval=1, blit=True)
 plt.show()
 
