@@ -7,7 +7,11 @@ public class Euler {
         File file = new File("/Users/DY/java/Term Project/position.data");
         FileWriter writer = new FileWriter(file);
 
+<<<<<<< HEAD
         int n = 5;      // number of bodies
+=======
+        int n = 2;      // number of bodies
+>>>>>>> b6ac3928f61dba49ec605df72844631c8f3f985c
         int dt = 7200;
         double simTime = 1e9;
         long totalSteps = (long) Math.round(simTime / dt);
@@ -20,6 +24,10 @@ public class Euler {
         }
         // bodies[0] = new Body(1.5e11, 0, 0, 3e4, 6e24, 1e6, "Earth");
         // bodies[1] = new Body(0, 0, 0, 0, 2e30, 1e6, "Sun");
+
+        // bodies[0] = new Body(1.5e11, 0, 0, 3e4, 6e24, 1e6, "Earth");
+        // bodies[1] = new Body(0, 0, 0, 0, 2e30, 1e6, "Sun");
+
 
         for (int step = 0; step < totalSteps; step++) {
             for (int i = 0; i < n; i ++) {

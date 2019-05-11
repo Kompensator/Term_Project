@@ -1,11 +1,13 @@
-package body;
-
 public class Body {
-    // Attributes: x, y, vx, vy, ax, ay, mass, radius
-    public double x, y, mass, vx, vy, ax, ay, axplusone, ayplusone, radius,temp_x,temp_y;
+    /**
+    Ressource for Verlet and VerletCollision
+    */
+    public double x, y, mass, vx, vy, ax, ay, axplusone, ayplusone, radius, temp_x, temp_y, euler_x, euler_y;
     public String name;
     public boolean merged;      // for two bodies merging into one
-	public static final int dt = 900;
+	public static final int dt = 7200;
+    public static final double G = 6.6740831e-11;
+
 
     public Body (double x, double y, double vx, double vy, double mass, double radius, String name) {
         // constructor
@@ -23,6 +25,8 @@ public class Body {
         this.temp_x = x;
         this.temp_y = y;
         this.merged = false;
+        this.euler_x = this.x;
+        this.euler_y = this.y;
     }
 
     public boolean collisionDetection(Body body) {
@@ -81,7 +85,6 @@ public class Body {
         */
 
         boolean collision;
-        final double G = 6.6740831e-11;
 
         for (int i = 0; i < bodies.length; i ++) {
 
@@ -111,13 +114,9 @@ public class Body {
                     }
 
                     if (otherBody.name != this.name){
-                        double thisxplus = this.x + this.vx * dt;
-                        double thisyplus = this.y + this.vy * dt;
+                        // computes and updates axplusone and ayplusone
 
-                        double otherxplus = otherBody.x + otherBody.vx * dt;
-                        double otheryplus = otherBody.y + otherBody.vy * dt;
-
-                        double r = Math.sqrt(Math.pow((thisxplus - otherxplus),2) + Math.pow((thisyplus - otheryplus),2));
+                        double r = Math.sqrt(Math.pow((this.euler_x - otherBody.euler_x),2) + Math.pow((this.euler_y - otherBody.euler_y),2));
                         double temp_acc;
                         try {
                             temp_acc = (G * otherBody.mass)/Math.pow(r,3);       // temp_acc * deltax = ax
@@ -125,8 +124,8 @@ public class Body {
                         catch (ArithmeticException e){
                             temp_acc = 0;
                         }
-                        this.axplusone += temp_acc * (otherxplus - thisxplus);
-                        this.ayplusone += temp_acc * (otheryplus - thisyplus);
+                        this.axplusone += temp_acc * (otherBody.euler_x - this.euler_x);
+                        this.ayplusone += temp_acc * (otherBody.euler_y - this.euler_y);
                     }
                 }
             }
@@ -143,7 +142,12 @@ public class Body {
     }
 
     public void calculatePosition(Body[] bodies, int dt) {
+<<<<<<< HEAD
         /* calculates the new positions and stores them in temp_x and temp_y
+=======
+        /** calculates the new positions and stores them in temp_x and temp_y
+         * does NOT directly update x and y
+>>>>>>> b6ac3928f61dba49ec605df72844631c8f3f985c
         */
         this.updateVelocity(bodies, dt);
         this.temp_x += this.vx * dt + 0.5 * this.ax * dt * dt;
@@ -160,6 +164,41 @@ public class Body {
         this.ax = 0;
         this.ay = 0;
 		this.axplusone = 0;
-		this.ayplusone = 0;
+        this.ayplusone = 0;
+        
+    }
+
+    public void EulerNextPos(Body[] bodies, int dt) {
+        /** updates the current body's position with respect to other bodies
+         * This "guessed" position is used for Verlet's method 
+         * to calculate  Ax n+1
+         * Changes ONLY fields euler_x and euler_y
+         * all other variables are limited to the method
+         */
+        double ax = 0;
+        double ay = 0;
+        double temp_vx = this.vx;
+        double temp_vy = this.vy;
+        for (int i = 0; i < bodies.length; i++) {
+            Body otherBody = bodies[i];
+            if (otherBody.name != this.name){       // makes sure a body doesn't calculate acc on itself
+                double r = Math.sqrt(Math.pow((this.x - otherBody.x),2) + Math.pow((this.y - otherBody.y),2));
+                double temp_acc;
+                try {
+                    temp_acc = (G * otherBody.mass)/Math.pow(r,3);       // temp_acc * deltax = ax
+                }
+                catch (ArithmeticException e){   
+                    temp_acc = 0;
+                }
+                ax += temp_acc * (otherBody.x - this.x);
+                ay += temp_acc * (otherBody.y - this.y);
+            }
+        }
+        // change temp_vx and temp_vy based on acceleration
+        temp_vx += ax * dt;
+        temp_vy += ay * dt;
+        
+        this.euler_x = this.x + temp_vx * dt;
+        this.euler_y = this.y + temp_vy * dt;
     }
 }

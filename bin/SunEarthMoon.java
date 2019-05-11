@@ -1,7 +1,6 @@
 import java.io.File;
 import java.io.FileWriter;
 import java.io.*;
-import body.Body;
 
 public class SunEarthMoon {
 
