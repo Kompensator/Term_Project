@@ -1,0 +1,5 @@
+Periapsis: 35.6 AU
+Mass Centauri A: 1.1 Solar Masses
+Mass Centauri B: 0.907 Solar Masses
+
+Velocities need to be calculated
