@@ -9,4 +9,4 @@ echo running
 java SunEarthMoon
 
 echo simulating
-python animate_collision.py
+python animate_SEM.py
