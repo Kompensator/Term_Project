@@ -5,21 +5,20 @@
     "version": "0.2.0",
     "configurations": [
 
-        {
+        {       // standard java debug 
             "type": "java",
-            "name": "Debug (Launch) - Current File",
+            "name": "Java - Current File",
             "request": "launch",
             "mainClass": "${file}",
             "console": "integratedTerminal"
         },
-        {
-            "type": "java",
-            "name": "Debug (Launch)-ArrayErrors",
+        
+        {       // standard python debug
+            "name": "Python - Current File",
+            "type": "python",
             "request": "launch",
-            "mainClass": "ArrayErrors"
-        }
-        {
-            
+            "program": "${file}",
+            "console":"integratedTerminal"
         }
     ]
 }
