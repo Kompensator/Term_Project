@@ -14,19 +14,19 @@ public class Centauri {
 
     public static void main (String[] args) throws IOException {
         // settings
-        int n = 3;      // number of bodies
+        int n = 2;      // number of bodies
         double simTime = 1e9;
         int totalSteps = (int) Math.round(simTime / dt);
 		double spread = 1.4e11;		// determines the square where the bodies are generated
         
         //File file = new File("/Users/DY/Term_Project/bin/testdata.data");       // data file
-        File file = new File("c://Users//alexd//Documents//School//Winter2019//CompSci//TermProject//Term_Project//bin//testdata.data"); //davids laptop
+        File file = new File("c://Users//alexd//Documents//School//Winter2019//CompSci//TermProject//Term_Project//bin//Centauri_system//testdata.data"); //davids laptop
 		
 		// File file = new File("your path here")
         FileWriter writer = new FileWriter(file);
 
 		//File config = new File("/Users/DY/Term_Project/bin/sim.cfg");           // config file for animation
-		File config = new File("c://Users//alexd//Documents//School//Winter2019//CompSci//TermProject//Term_Project//bin//testdata.data"); //davids laptop
+		File config = new File("c://Users//alexd//Documents//School//Winter2019//CompSci//TermProject//Term_Project//bin//Centauri_system//sim.cfg"); //davids laptop
 		// File config = new File("your path here");
         FileWriter cfgWriter = new FileWriter(config);
         
@@ -43,9 +43,9 @@ public class Centauri {
         //     String bodyName = "Body" + i;
         //     bodies[i] = new Body(randint(-1.4e12, 1.4e12), randint(-1.4e12, 1.4e12), randint(-2e5, 2e5), randint(-2e5, 2e5), randint(7.5e22, 3e30), 1, bodyName);
         // }
-        bodies[0] = new Body(1.496e11, 0, 0, 29741, 5.97e24, 1e4, "Earth");
-       bodies[1] = new Body(0, 0, 0, 0, 1.989e30, 1e7, "Sun");
-		bodies[2] = new Body(1.49984e11, 0, 0, 30764, 7.348e22, 1e4, "Moon");
+        bodies[0] = new Body(0, 0, 0, 9785, 1.1*(1.989e30), 1e7, "Centauri A");
+       bodies[1] = new Body(11.2*(1.496e11), 0, 0, 11867, 0.907*(1.989e30), 1e7, "Centauri B");
+		//bodies[2] = new Body(1.49984e11, 0, 0, 30764, 7.348e22, 1e4, "Moon");
 
         for (int step = 0; step < totalSteps; step++) {
             for (int i = 0; i < n; i++) {

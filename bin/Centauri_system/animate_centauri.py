@@ -11,11 +11,11 @@ cfg_file = "sim.cfg"
 cfg = open(cfg_file, "r")
 
 # read settings fro sim.cfg
-n = 3
+n = 2
 total_steps = int(1e9/720) #sim time over dt
 number_of_dots = 100
 # spread determines the bound of the animation
-spread = float(cfg.readline()) * 1.25
+spread = 50*1.496e11
 file = open(data_file, "r")
 
 # trying to write the animation to a file
