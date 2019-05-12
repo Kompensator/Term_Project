@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 import matplotlib.animation as animation
 from sys import argv
+from sys import exit
 import numpy as np
 
 # determine which animation to run
@@ -28,16 +29,15 @@ cfg = open(cfg_file, "r")
 n = int(cfg.readline())
 total_steps = int(cfg.readline())
 number_of_dots = 150
-# spread determines the bound of the animation
+skip_steps = 4              # the higher the faster the animation is played
+
 if not focused:
     spread = 2.4e11
 else:
     spread = 2e9
+
 file = open(data_file, "r")
 
-# trying to write the animation to a file
-# Writer = animation.writers['html']
-# writer = Writer(fps=15, metadata=dict(artist='Me'), bitrate=1800)
 
 # setting up fig and axis
 fig, ax = plt.subplots(figsize=(9,12))
@@ -53,6 +53,7 @@ class body():
         self.y = []
         self.mass = 0.0
 
+
 def shift_coordinate(shift_x, shift_y, trace_x, trace_y):
     """shifts all the elements in a 2d list by x and y amount
     centers call the trace points with respect to Earth
@@ -65,57 +66,69 @@ def shift_coordinate(shift_x, shift_y, trace_x, trace_y):
     return arr_x.tolist(), arr_y.tolist()
 
 
-
 def update_normal(frame):
+    frame *= skip_steps
     trail_x, trail_y = [], []
-    for i in range(n):
-        x = bodies[i].x[frame]
-        y = bodies[i].y[frame]
+    try:
+        for i in range(n):
+            x = bodies[i].x[frame]
+            y = bodies[i].y[frame]
 
-        # merge handling
-        if not (x == 0 and y == 0):
-            animated_bodies[i].set_data(x,y)
-        else:
-            animated_bodies[i].set_data([],[])
+            # merge handling
+            if not (x == 0 and y == 0):
+                animated_bodies[i].set_data(x,y)
+            else:
+                animated_bodies[i].set_data([],[])
 
-    # writing in the trace
-    for i in range(n):
-        body = bodies[i]
-        if frame < number_of_dots:
-            trail_x.append(body.x[0:frame])
-            trail_y.append(body.y[0:frame])
+        # writing in the trace
+        for i in range(n):
+            body = bodies[i]
+            if frame < number_of_dots:
+                trail_x.append(body.x[0:frame])
+                trail_y.append(body.y[0:frame])
 
-        else:
-            trail_x.append(body.x[(frame-number_of_dots):frame])
-            trail_y.append(body.y[(frame-number_of_dots):frame])
+            else:
+                trail_x.append(body.x[(frame-number_of_dots):frame])
+                trail_y.append(body.y[(frame-number_of_dots):frame])
 
-    animated_bodies[n].set_data(trail_x,trail_y)
-    return animated_bodies
+        animated_bodies[n].set_data(trail_x,trail_y)
+        return animated_bodies
+    except IndexError:
+        print("Animation finihsed")
+        sys.exit(0)
+
 
 def update_focused(frame):
+    frame *= skip_steps
     trail_x, trail_y = [], []
 
-    earth_x, earth_y = bodies[0].x[frame], bodies[0].y[frame]
-    # adjust Moon's position so that Earth is at the center of graph
-    moon_x, moon_y = bodies[2].x[frame] - earth_x, bodies[2].y[frame] - earth_y 
-    animated_bodies[0].set_data(0, 0)
-    animated_bodies[2].set_data(moon_x, moon_y)
+    try:
+        earth_x, earth_y = bodies[0].x[frame], bodies[0].y[frame]
+        # adjust Moon's position so that Earth is at the center of graph
+        moon_x, moon_y = bodies[2].x[frame] - earth_x, bodies[2].y[frame] - earth_y 
+        animated_bodies[0].set_data(0, 0)
+        animated_bodies[2].set_data(moon_x, moon_y)
 
-    # writing in the trace
-    for i in range(n):
-        body = bodies[i]
-        if frame < number_of_dots:
-            trail_x.append(body.x[0:frame])
-            trail_y.append(body.y[0:frame])
+        # writing in the trace
+        for i in range(n):
+            body = bodies[i]
+            if frame < number_of_dots:
+                trail_x.append(body.x[0:frame])
+                trail_y.append(body.y[0:frame])
 
-        else:
-            trail_x.append(body.x[(frame-number_of_dots):frame])
-            trail_y.append(body.y[(frame-number_of_dots):frame])
+            else:
+                trail_x.append(body.x[(frame-number_of_dots):frame])
+                trail_y.append(body.y[(frame-number_of_dots):frame])
 
-    trail_x, trail_y = shift_coordinate(earth_x, earth_y, trail_x, trail_y)
-    animated_bodies[n].set_data(trail_x,trail_y)
+        trail_x, trail_y = shift_coordinate(earth_x, earth_y, trail_x, trail_y)
+        animated_bodies[n].set_data(trail_x,trail_y)
 
-    return animated_bodies
+        return animated_bodies
+
+    except IndexError:
+        print("Animation finished")
+        sys.exit(0)
+
 
 # creating objects to that contains the position data
 bodies = []
@@ -158,8 +171,3 @@ else:
 ani = FuncAnimation(fig, update, interval=1, blit=True)
 plt.show()
 
-
-# fig1 = plt.figure()
-# im_ani = animation.ArtistAnimation(fig1, ims, interval=50, repeat_delay=3000,
-#                                    blit=True)
-# im_ani.save('im.mp4', writer=writer)
