@@ -29,7 +29,7 @@ cfg = open(cfg_file, "r")
 n = int(cfg.readline())
 total_steps = int(cfg.readline())
 number_of_dots = 150
-skip_steps = 4              # the higher the faster the animation is played
+skip_steps = 30              # the higher the faster the animation is played
 
 if not focused:
     spread = 2.4e11
@@ -95,7 +95,7 @@ def update_normal(frame):
         return animated_bodies
     except IndexError:
         print("Animation finihsed")
-        sys.exit(0)
+        exit(0)
 
 
 def update_focused(frame):
@@ -127,7 +127,7 @@ def update_focused(frame):
 
     except IndexError:
         print("Animation finished")
-        sys.exit(0)
+        exit(0)
 
 
 # creating objects to that contains the position data
