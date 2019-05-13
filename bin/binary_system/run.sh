@@ -1,10 +1,10 @@
 #! /bin/bash
 
 echo Compiling
-javac VerletCollision.java
+javac Binaries.java
 
 echo Running Simulation
-java VerletCollision
+java Binaries
 
 echo Animating...
-python animate_collision.py
+python animate_binary.py
