@@ -13,12 +13,12 @@ public class SunEarthMoon {
         final int totalSteps = (int)(simTime/dt);
         double spread = 1.5e11;
         
-        // File file = new File("c://Users//alexd//Documents//School//Winter2019//CompSci//TermProject//Term_Project//bin//Sun_Earth_Moon//testdata.data"); //davids laptop
-        File file = new File("/Users/DY/Term_Project/bin/Sun_Earth_Moon/testdata.data");       // data file	
+        File file = new File("c://Users//alexd//Documents//School//Winter2019//CompSci//TermProject//Term_Project//bin//Sun_Earth_Moon//testdata.data"); //davids laptop
+        //File file = new File("/Users/DY/Term_Project/bin/Sun_Earth_Moon/testdata.data");       // data file	
         FileWriter writer = new FileWriter(file);
 
-		// File config = new File("c://Users//alexd//Documents//School//Winter2019//CompSci//TermProject//Term_Project//bin//Sun_Earth_Moon//sim.cfg"); //davids laptop
-		File config = new File("/Users/DY/Term_Project/bin/Sun_Earth_Moon/sim.cfg");           // config file for animation
+		File config = new File("c://Users//alexd//Documents//School//Winter2019//CompSci//TermProject//Term_Project//bin//Sun_Earth_Moon//sim.cfg"); //davids laptop
+		//File config = new File("/Users/DY/Term_Project/bin/Sun_Earth_Moon/sim.cfg");           // config file for animation
        
 	   FileWriter cfgWriter = new FileWriter(config);
         
