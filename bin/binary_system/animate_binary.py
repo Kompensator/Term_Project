@@ -17,7 +17,7 @@ total_steps = int(1e9//720) #sim time over dt
 number_of_dots = 100
 # spread determines the bound of the animation
 spread = 5*1.496e11
-skip_steps = 0
+skip_steps = 1000
 file = open(data_file, "r")
 
 
