@@ -1,8 +1,7 @@
 # Master Folder for Computer Science Class
 ### Authors
 
-##### Ding Yi Zhang
-##### David Alexander
+##### Ding Yi Zhang & David Alexander
 
 
 * Purpose: Binary star system simulation, with possibility to simulate the N-Body problem, using Verlet second order numerical intergration method
