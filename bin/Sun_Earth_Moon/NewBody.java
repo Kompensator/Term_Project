@@ -50,8 +50,10 @@ public class NewBody {
 
 
     public void calculateVelocity(int dt) {
-        this.vx += 0.5 * (this.ax + this.axlast) * dt;
-        this.vy += 0.5 * (this.ay + this.aylast) * dt;
+        // this.vx += 0.5 * (this.ax + this.axlast) * dt;
+        // this.vy += 0.5 * (this.ay + this.aylast) * dt;
+        this.vx += (0.4 * this.ax + 0.6 * this.axlast) * dt;
+        this.vy += (0.4 * this.ay + 0.6 * this.aylast) * dt;
     }
 
 
