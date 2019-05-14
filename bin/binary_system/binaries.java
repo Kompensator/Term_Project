@@ -14,17 +14,17 @@ public class binaries {
 
     public static void main (String[] args) throws IOException {
         // settings
-        int n = 2;      // number of bodies
+        int n = 3;      // number of bodies
         double simTime = 1e9;
         int totalSteps = (int) Math.round(simTime / dt);
 		double spread = 5e11;		// determines the square where the bodies are generated
         
-        File file = new File("/Users/DY/Term_Project/bin/binary_system/testdata.data");       // data file
-        // File file = new File("c://Users//alexd//Documents//School//Winter2019//CompSci//TermProject//Term_Project//bin//binary_system//testdata.data"); //davids laptop
+        //File file = new File("/Users/DY/Term_Project/bin/binary_system/testdata.data");       // data file
+        File file = new File("c://Users//alexd//Documents//School//Winter2019//CompSci//TermProject//Term_Project//bin//binary_system//testdata.data"); //davids laptop
 		FileWriter writer = new FileWriter(file);
 
-		File config = new File("/Users/DY/Term_Project/bin/binary_system/sim.cfg");           // config file for animation
-		// File config = new File("c://Users//alexd//Documents//School//Winter2019//CompSci//TermProject//Term_Project//bin//binary_system//sim.cfg"); //davids laptop
+		//File config = new File("/Users/DY/Term_Project/bin/binary_system/sim.cfg");           // config file for animation
+		File config = new File("c://Users//alexd//Documents//School//Winter2019//CompSci//TermProject//Term_Project//bin//binary_system//sim.cfg"); //davids laptop
 		// File config = new File("your path here");
         FileWriter cfgWriter = new FileWriter(config);
         
@@ -43,7 +43,7 @@ public class binaries {
         // }
         bodies[0] = new NewBody(-1.75*(1.496e11), 0, 0, -13782, 5*(1.989e30), 1e7, "Centauri A");
         bodies[1] = new NewBody(1.75*(1.496e11), 0, 0, 17792, 3*(1.989e30), 1e7, "Centauri B");
-		//bodies[2] = new Body(1.49984e11, 0, 0, 30764, 7.348e22, 1e4, "Moon");
+		bodies[2] = new NewBody(0, 0, 0, 0, 7.348e22, 1e4, "Moon");
 
         for (int i = 0;i < bodies.length;i++) {
             bodies[i].prime(bodies, dt);
