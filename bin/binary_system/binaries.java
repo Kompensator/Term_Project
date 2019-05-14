@@ -43,7 +43,7 @@ public class binaries {
         // }
         bodies[0] = new NewBody(-1.75*(1.496e11), 0, 0, -13782, 5*(1.989e30), 1e7, "Centauri A");
         bodies[1] = new NewBody(1.75*(1.496e11), 0, 0, 17792, 3*(1.989e30), 1e7, "Centauri B");
-		bodies[2] = new NewBody(0, 0, 0, 0, 7.348e22, 1e4, "Moon");
+		bodies[2] = new NewBody(0.75*(1.496e11), 0, 0, 17792 + 51566, 6e24, 1e4, "planet");
 
         for (int i = 0;i < bodies.length;i++) {
             bodies[i].prime(bodies, dt);
