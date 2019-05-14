@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-from matplotlib.animation import  FuncAnimation
+from matplotlib.animation import FuncAnimation
 from sys import argv
 from sys import exit
 import numpy as np
@@ -50,7 +50,6 @@ class body():
     def __init__(self):
         self.x = []
         self.y = []
-        self.mass = 0.0
 
 
 def shift_coordinate(shift_x, shift_y, trace_x, trace_y):
@@ -141,7 +140,6 @@ for i in range(total_steps):
             data = [float (n) for n in file.readline().split()];
             bodies[j].x.append(data[1])
             bodies[j].y.append(data[2])
-            bodies[j].mass = data[3]
         except:
             break
 
