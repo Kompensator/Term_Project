@@ -11,6 +11,9 @@ public class binaries {
 	*/
 
 	public static final int dt = 720;
+	public static final double au = 1.496e11; //au in m
+	public static final double sm = 1.989e30; //solar mass in kg
+	public static final double G = 6.67e-11;
 
     public static void main (String[] args) throws IOException {
         // settings
@@ -19,12 +22,12 @@ public class binaries {
         int totalSteps = (int) Math.round(simTime / dt);
 		double spread = 5e11;		// determines the square where the bodies are generated
 
-        File file = new File("/Users/DY/Term_Project/bin/binary_system/testdata.data");       // data file
-        // File file = new File("c://Users//alexd//Documents//School//Winter2019//CompSci//TermProject//Term_Project//bin//binary_system//testdata.data"); //davids laptop
+        //File file = new File("/Users/DY/Term_Project/bin/binary_system/testdata.data");       // data file
+        File file = new File("c://Users//alexd//Documents//School//Winter2019//CompSci//TermProject//Term_Project//bin//binary_system//testdata.data"); //davids laptop
 		FileWriter writer = new FileWriter(file);
 
-		File config = new File("/Users/DY/Term_Project/bin/binary_system/sim.cfg");           // config file for animation
-		// File config = new File("c://Users//alexd//Documents//School//Winter2019//CompSci//TermProject//Term_Project//bin//binary_system//sim.cfg"); //davids laptop
+		//ile config = new File("/Users/DY/Term_Project/bin/binary_system/sim.cfg");           // config file for animation
+		File config = new File("c://Users//alexd//Documents//School//Winter2019//CompSci//TermProject//Term_Project//bin//binary_system//sim.cfg"); //davids laptop
         FileWriter cfgWriter = new FileWriter(config);
 
 		// writing config to config file
@@ -40,9 +43,10 @@ public class binaries {
         //     String bodyName = "Body" + i;
         //     bodies[i] = new Body(randint(-1.4e12, 1.4e12), randint(-1.4e12, 1.4e12), randint(-2e5, 2e5), randint(-2e5, 2e5), randint(7.5e22, 3e30), 1, bodyName);
         // }
-        bodies[0] = new NewBody(-1.75*(1.496e11), 0, 0, -13782, 5*(1.989e30), 1e7, "Centauri A");
-        bodies[1] = new NewBody(1.75*(1.496e11), 0, 0, 17792, 3*(1.989e30), 1e7, "Centauri B");
-		bodies[2] = new NewBody(0.75*(1.496e11), 0, 0, 17792 + 51566, 6e24, 1e4, "planet");
+        bodies[0] = new NewBody(-1.75*au, 0, 0, -13782, 5*sm, 1e7, "Centauri A");
+        bodies[1] = new NewBody(1.75*au, 0, 0, 17792, 3*sm, 1e7, "Centauri B");
+		//bodies[2] = new NewBody(-2.0*au, 0, 0, -13782 + -133144, 6e24, 1e4, "planet");
+		bodies[2] = new NewBody(8*au, 0, 0, Math.sqrt((G*8.0*sm)/(8*au)), 6e24, 1e4, "planet2");
 
         for (int i = 0;i < bodies.length;i++) {
             bodies[i].prime(bodies, dt);

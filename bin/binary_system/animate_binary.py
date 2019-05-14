@@ -26,10 +26,10 @@ cfg = open(cfg_file, "r")
 # read settings fro sim.cfg
 n = 3
 total_steps = int(1e9//720) #sim time over dt
-number_of_dots = 100
+number_of_dots = 1000
 # spread determines the bound of the animation
-spread = 5*1.496e11
-skip_steps = 100
+spread = 15*1.496e11
+skip_steps = 50
 mass_ratio = 0.625
 
 file = open(data_file, "r")

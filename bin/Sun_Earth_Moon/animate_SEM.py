@@ -1,5 +1,5 @@
 import matplotlib.pyplot as plt
-import matplotlib.animation as animation
+from matplotlib.animation import  FuncAnimation
 from sys import argv
 from sys import exit
 import numpy as np
@@ -28,7 +28,7 @@ cfg = open(cfg_file, "r")
 n = int(cfg.readline())
 total_steps = int(cfg.readline())
 number_of_dots = 150
-skip_steps = 50              # the higher the faster the animation is played
+skip_steps = 10          # the higher the faster the animation is played
 
 if not focused:
     spread = 2.4e11
