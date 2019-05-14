@@ -8,4 +8,4 @@ echo running
 java SunEarthMoon 
 
 echo simulating
-python animate_SEM.py focused
+python animate_SEM.py

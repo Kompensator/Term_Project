@@ -41,14 +41,14 @@ public class binaries {
         //     String bodyName = "Body" + i;
         //     bodies[i] = new Body(randint(-1.4e12, 1.4e12), randint(-1.4e12, 1.4e12), randint(-2e5, 2e5), randint(-2e5, 2e5), randint(7.5e22, 3e30), 1, bodyName);
         // }
-        bodies[0] = new NewBody(-1.75*(1.496e11), 0, 0, 10, 5*(1.989e30), 1e7, "Centauri A");
-       bodies[1] = new NewBody(1.75*(1.496e11), 0, 0, 10000, 3*(1.989e30), 1e7, "Centauri B");
+        bodies[0] = new NewBody(-1.75*(1.496e11), 0, 0, -13782, 5*(1.989e30), 1e7, "Centauri A");
+        bodies[1] = new NewBody(1.75*(1.496e11), 0, 0, 17792, 3*(1.989e30), 1e7, "Centauri B");
 		//bodies[2] = new Body(1.49984e11, 0, 0, 30764, 7.348e22, 1e4, "Moon");
 
         for (int i = 0;i < bodies.length;i++) {
             bodies[i].prime(bodies, dt);
         }
-		
+		 
 		for (int step = 0; step < totalSteps; step++) {
             for (int i = 0; i < n; i++) {
 				bodies[i].step(bodies, dt);
