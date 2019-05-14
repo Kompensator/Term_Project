@@ -1,5 +1,4 @@
 import matplotlib.pyplot as plt
-from matplotlib.animation import FuncAnimation
 import matplotlib.animation as animation
 from sys import argv
 from sys import exit
@@ -105,7 +104,7 @@ def update_focused(frame):
     try:
         earth_x, earth_y = bodies[0].x[frame], bodies[0].y[frame]
         # adjust Moon's position so that Earth is at the center of graph
-        moon_x, moon_y = bodies[2].x[frame] - earth_x, bodies[2].y[frame] - earth_y 
+        moon_x, moon_y = bodies[2].x[frame] - earth_x, bodies[2].y[frame] - earth_y
         animated_bodies[0].set_data(0, 0)
         animated_bodies[2].set_data(moon_x, moon_y)
 
@@ -170,4 +169,3 @@ else:
 
 ani = FuncAnimation(fig, update, interval=1, blit=True)
 plt.show()
-
