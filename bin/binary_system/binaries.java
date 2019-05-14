@@ -19,12 +19,12 @@ public class binaries {
         int totalSteps = (int) Math.round(simTime / dt);
 		double spread = 5e11;		// determines the square where the bodies are generated
         
-        //File file = new File("/Users/DY/Term_Project/bin/binary_system/testdata.data");       // data file
-        File file = new File("c://Users//alexd//Documents//School//Winter2019//CompSci//TermProject//Term_Project//bin//binary_system//testdata.data"); //davids laptop
+        File file = new File("/Users/DY/Term_Project/bin/binary_system/testdata.data");       // data file
+        // File file = new File("c://Users//alexd//Documents//School//Winter2019//CompSci//TermProject//Term_Project//bin//binary_system//testdata.data"); //davids laptop
 		FileWriter writer = new FileWriter(file);
 
-		//File config = new File("/Users/DY/Term_Project/bin/binary_system/sim.cfg");           // config file for animation
-		File config = new File("c://Users//alexd//Documents//School//Winter2019//CompSci//TermProject//Term_Project//bin//binary_system//sim.cfg"); //davids laptop
+		File config = new File("/Users/DY/Term_Project/bin/binary_system/sim.cfg");           // config file for animation
+		// File config = new File("c://Users//alexd//Documents//School//Winter2019//CompSci//TermProject//Term_Project//bin//binary_system//sim.cfg"); //davids laptop
 		// File config = new File("your path here");
         FileWriter cfgWriter = new FileWriter(config);
         
