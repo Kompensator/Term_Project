@@ -17,10 +17,10 @@ public class binaries {
 
     public static void main (String[] args) throws IOException {
         // settings
-        int n = 3;      // number of bodies
+        int n = 4;      // number of bodies
         double simTime = 1e9;
         int totalSteps = (int) Math.round(simTime / dt);
-		double spread = 5e11;		// determines the square where the bodies are generated
+		double spread = 7e11;		// determines the square where the bodies are generated
 
         //File file = new File("/Users/DY/Term_Project/bin/binary_system/testdata.data");       // data file
         File file = new File("c://Users//alexd//Documents//School//Winter2019//CompSci//TermProject//Term_Project//bin//binary_system//testdata.data"); //davids laptop
@@ -45,8 +45,8 @@ public class binaries {
         // }
         bodies[0] = new NewBody(-1.75*au, 0, 0, -13782, 5*sm, 1e7, "Centauri A");
         bodies[1] = new NewBody(1.75*au, 0, 0, 17792, 3*sm, 1e7, "Centauri B");
-		//bodies[2] = new NewBody(-2.0*au, 0, 0, -13782 + -133144, 6e24, 1e4, "planet");
-		bodies[2] = new NewBody(8*au, 0, 0, Math.sqrt((G*8.0*sm)/(8*au)), 6e24, 1e4, "planet2");
+		bodies[3] = new NewBody(-2.0*au, 0, 0, -13782 + -133144, 6e24, 1e4, "planet");
+		bodies[2] = new NewBody(5*au, 0, 0, Math.sqrt((G*8.0*sm)/(5*au)), 6e24, 1e4, "planet2");
 
         for (int i = 0;i < bodies.length;i++) {
             bodies[i].prime(bodies, dt);
