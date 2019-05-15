@@ -26,10 +26,10 @@ cfg = open(cfg_file, "r")
 # read settings fro sim.cfg
 n = 3
 total_steps = int(1e9//720) #sim time over dt
-number_of_dots = 1000
+number_of_dots = 150
 # spread determines the bound of the animation
-spread = 15*1.496e11
-skip_steps = 50
+spread = 10*1.496e11
+skip_steps = 150
 mass_ratio = 0.625
 
 file = open(data_file, "r")
@@ -66,9 +66,10 @@ def update_focused(frame):
 
     try:
         star1x, star1y = bodies[0].x[frame], bodies[0].y[frame]
-        star2x, star2y = bodies[1].y[frame], bodies[1].y[frame]
+        star2x, star2y = bodies[1].x[frame], bodies[1].y[frame]
         mass_center_x = star1x + (1 - mass_ratio) * (star2x - star1x)
         mass_center_y = star1y + (1 - mass_ratio) * (star2y - star1y)
+
 
         for i in range(n):
             animated_bodies[i].set_data(bodies[i].x[frame] - mass_center_x, bodies[i].y[frame] - mass_center_y)

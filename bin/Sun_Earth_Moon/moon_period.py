@@ -1,4 +1,6 @@
-import numpy as np
+from numpy import (arccos, dot)
+import math
+
 
 class body():
     def __init__(self):
@@ -14,10 +16,10 @@ def unit_vector(vector):
 def angle_between(v1, v2):
     u1 = unit_vector(v1)
     u2 = unit_vector(v2)
-    return np.arccos(np.dot(u1, u2))
+    return arccos(dot(u1, u2))
 
 def main():
-    sim_time = 3.154e7
+    sim_time = 1e8
     dt = 600
     n = 3
     total_steps = int(sim_time//dt)
@@ -40,22 +42,30 @@ def main():
     orbit_count = 0
     last_earth_angle = 0
     last_moon_angle = 0
+    periods = []
+    last_orbit = 0
     for i in range(total_steps):
         """ processing loop
         """
         v1 = [bodies[0].x[i] - bodies[1].x[i], bodies[0].y[i] - bodies[1].y[i]]         # earth vector
-        v2 = [bodies[2].x[i] - bodies[1].x[i], bodies[2].y[i] - bodies[1].y[i]]         # sun vector
+        v2 = [bodies[2].x[i] - bodies[1].x[i], bodies[2].y[i] - bodies[1].y[i]]         # moon vector
 
         earth_angle = angle_between(v1, [1, 0])
         moon_angle = angle_between(v2, [1, 0])
+        
 
-        if earth_angle < moon_angle and last_earth_angle > last_moon_angle:
+        if (earth_angle < moon_angle and last_earth_angle > last_moon_angle):
             orbit_count += 1
+            periods.append(i - last_orbit)
+            last_orbit = i
 
         last_earth_angle = earth_angle
         last_moon_angle = moon_angle
 
-    print(orbit_count)
+    print("total orbits: %r" %orbit_count)
+    periods = [round(period * dt/(60*60*24),2) for period in periods]
+    print(periods)
+
 
 if __name__ == "__main__":
     main()
