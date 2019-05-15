@@ -147,18 +147,20 @@ for i in range(total_steps):
 if not focused:
     star1, = plt.plot([],[],color='red',marker='o',markersize=9,animated=True)
     star2, = plt.plot([],[],color='yellow',marker='o',markersize=7,animated=True)
-    planet, = plt.plot([],[],color='blue',marker='o',markersize=5.5,animated=True)
+    planet1, = plt.plot([],[],color='blue',marker='o',markersize=5.5,animated=True)
+    planet2, = plt.plot([],[],color='blue',marker='o',markersize=6,animated=True)
 
-    animated_bodies = [star1, star2, planet]
+    animated_bodies = [star1, star2, planet1, planet2]
 
     update = update_normal
 
 else:
     star1, = plt.plot([],[],color='red',marker='o',markersize=9,animated=True)
     star2, = plt.plot([],[],color='yellow',marker='o',markersize=7,animated=True)
-    planet, = plt.plot([],[],color='blue',marker='o',markersize=5.5,animated=True)
+    planet1, = plt.plot([],[],color='blue',marker='o',markersize=5.5,animated=True)
+    planet2, = plt.plot([],[],color='blue',marker='o',markersize=6,animated=True)
 
-    animated_bodies = [star1, star2, planet]
+    animated_bodies = [star1, star2, planet1, planet2]
 
     update = update_focused
 
