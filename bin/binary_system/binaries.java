@@ -22,12 +22,20 @@ public class binaries {
         int totalSteps = (int) Math.round(simTime / dt);
 		double spread = 7e11;		// determines the square where the bodies are generated
 
-        //File file = new File("/Users/DY/Term_Project/bin/binary_system/testdata.data");       // data file
-        File file = new File("c://Users//alexd//Documents//School//Winter2019//CompSci//TermProject//Term_Project//bin//binary_system//testdata.data"); //davids laptop
+        String dataDir, configDir;
+        if (System.getProperty("os.name").equals("Mac OS X")) {
+            dataDir = "/Users/DY/Term_Project/bin/binary_system/testdata.data";
+            configDir = "/Users/DY/Term_Project/bin/binary_system/sim.cfg";
+        }
+        else {
+            dataDir = "c://Users//alexd//Documents//School//Winter2019//CompSci//TermProject//Term_Project//bin//binary_system//testdata.data";
+            configDir = "c://Users//alexd//Documents//School//Winter2019//CompSci//TermProject//Term_Project//bin//binary_system//sim.cfg";
+        }
+
+        File file = new File(dataDir);
 		FileWriter writer = new FileWriter(file);
 
-		//ile config = new File("/Users/DY/Term_Project/bin/binary_system/sim.cfg");           // config file for animation
-		File config = new File("c://Users//alexd//Documents//School//Winter2019//CompSci//TermProject//Term_Project//bin//binary_system//sim.cfg"); //davids laptop
+		File config = new File(configDir); //davids laptop
         FileWriter cfgWriter = new FileWriter(config);
 
 		// writing config to config file
@@ -38,11 +46,6 @@ public class binaries {
 
         NewBody[] bodies = new NewBody[n];
 
-        // add Bodie to bodies
-        // for (int i = 0; i < n; i ++) {
-        //     String bodyName = "Body" + i;
-        //     bodies[i] = new Body(randint(-1.4e12, 1.4e12), randint(-1.4e12, 1.4e12), randint(-2e5, 2e5), randint(-2e5, 2e5), randint(7.5e22, 3e30), 1, bodyName);
-        // }
         bodies[0] = new NewBody(-1.75*au, 0, 0, -13782, 5*sm, 1e7, "Centauri A");
         bodies[1] = new NewBody(1.75*au, 0, 0, 17792, 3*sm, 1e7, "Centauri B");
 		bodies[3] = new NewBody(-2.0*au, 0, 0, -13782 + -133144, 6e24, 1e4, "planet");
