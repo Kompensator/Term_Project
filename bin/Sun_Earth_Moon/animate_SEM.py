@@ -28,6 +28,7 @@ cfg = open(cfg_file, "r")
 n = int(cfg.readline())
 total_steps = int(cfg.readline())
 number_of_dots = 150
+dt = 600
 skip_steps = 50          # the higher the faster the animation is played
 
 if not focused:
@@ -67,6 +68,8 @@ def shift_coordinate(shift_x, shift_y, trace_x, trace_y):
 def update_normal(frame):
     frame *= skip_steps
     trail_x, trail_y = [], []
+
+    text.set_text(str(frame*dt//86400) + " days elapsed")
     try:
         for i in range(n):
             x = bodies[i].x[frame]
@@ -90,7 +93,9 @@ def update_normal(frame):
                 trail_y.append(body.y[(frame-number_of_dots):frame])
 
         animated_bodies[n].set_data(trail_x,trail_y)
-        return animated_bodies
+
+        return animated_bodies[0], animated_bodies[1], animated_bodies[2], animated_bodies[3], text
+
     except IndexError:
         print("Animation finihsed")
         exit(0)
@@ -100,6 +105,7 @@ def update_focused(frame):
     frame *= skip_steps
     trail_x, trail_y = [], []
 
+    text.set_text(str(frame*dt//86400) + " days elapsed")
     try:
         earth_x, earth_y = bodies[0].x[frame], bodies[0].y[frame]
         # adjust Moon's position so that Earth is at the center of graph
@@ -121,7 +127,7 @@ def update_focused(frame):
         trail_x, trail_y = shift_coordinate(earth_x, earth_y, trail_x, trail_y)
         animated_bodies[n].set_data(trail_x,trail_y)
 
-        return animated_bodies
+        return animated_bodies[0], animated_bodies[1], animated_bodies[2], animated_bodies[3], text
 
     except IndexError:
         print("Animation finished")
@@ -149,6 +155,8 @@ if not focused:
     sun_plot, = plt.plot([],[],color='#ffff00',marker='o',markersize=12,animated=True)
     moon_plot, = plt.plot([],[],color='#f5f3ce',marker='o',markersize=3,animated=True)
 
+    text = ax.text(0.1, 0.1, '', color="white", transform=ax.transAxes, fontsize=12, animated=True)
+
     animated_bodies = [earth_plot, sun_plot, moon_plot]          # the packing order is important
     # creating trail of bodies
     trail, = plt.plot([], [], 'bo', markersize=0.2, animated=True)
@@ -159,6 +167,8 @@ else:
     earth_plot, = plt.plot([],[],color='#0077be',marker='o',markersize=8,animated=True)
     sun_plot, = plt.plot([],[],color='#ffff00',marker='o',markersize=12,animated=True)
     moon_plot, = plt.plot([],[],color='#f5f3ce',marker='o',markersize=6,animated=True)
+
+    text = ax.text(0.1, 0.1, '', color="white", transform=ax.transAxes, fontsize=12, animated=True)
 
     animated_bodies = [earth_plot, sun_plot, moon_plot]          # the packing order is importantnt
     trail, = plt.plot([], [], 'bo', markersize=1, animated=True)

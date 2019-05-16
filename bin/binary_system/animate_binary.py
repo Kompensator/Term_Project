@@ -28,14 +28,15 @@ n = 4
 total_steps = int(1e9//720) #sim time over dt
 number_of_dots = 150
 # spread determines the bound of the animation
-spread = 15*1.496e11
-skip_steps = 150
+spread = 14*1.496e11
+skip_steps = 100
 mass_ratio = 0.625
 
 file = open(data_file, "r")
 
 # setting up fig and axis
 fig, ax = plt.subplots()
+plt.subplots_adjust(left=0.1, right=0.9, top=0.9, bottom=0.1)
 ax.set_facecolor('xkcd:black')
 ax.set_xlim(-spread, spread)
 ax.set_ylim(-spread, spread)
