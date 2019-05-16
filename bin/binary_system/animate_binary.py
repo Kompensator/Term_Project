@@ -31,6 +31,7 @@ number_of_dots = 150
 spread = 14*1.496e11
 skip_steps = 100
 mass_ratio = 0.625
+dt = 720
 
 file = open(data_file, "r")
 
@@ -65,6 +66,8 @@ def update_focused(frame):
     trail_x, trail_y = [], []
     frame *= skip_steps
 
+    text.set_text(str(frame*dt//86400) + " days elapsed")
+
     try:
         star1x, star1y = bodies[0].x[frame], bodies[0].y[frame]
         star2x, star2y = bodies[1].x[frame], bodies[1].y[frame]
@@ -88,15 +91,19 @@ def update_focused(frame):
         trail_x, trail_y = shift_coordinate(mass_center_x, mass_center_y, trail_x, trail_y)
 
         animated_bodies[n].set_data(trail_x,trail_y)
+        
+        return animated_bodies[0], animated_bodies[1], animated_bodies[2], animated_bodies[3], animated_bodies[4], text
 
-        return animated_bodies
     except IndexError:
         print("Animation finished")
         exit(0)
 
+
 def update_normal(frame):
     trail_x, trail_y = [], []
     frame *= skip_steps
+
+    text.set_text(str(frame*dt//86400) + " days elapsed")
 
     try:
         for i in range(n):
@@ -122,7 +129,7 @@ def update_normal(frame):
 
         animated_bodies[n].set_data(trail_x,trail_y)
 
-        return animated_bodies
+        return animated_bodies[0], animated_bodies[1], animated_bodies[2], animated_bodies[3], animated_bodies[4], text
 
     except IndexError:
         print("Animation finished")
@@ -150,6 +157,8 @@ if not focused:
     star2, = plt.plot([],[],color='yellow',marker='o',markersize=7,animated=True)
     planet1, = plt.plot([],[],color='blue',marker='o',markersize=5.5,animated=True)
     planet2, = plt.plot([],[],color='blue',marker='o',markersize=6,animated=True)
+    
+    text = ax.text(0.1, 0.1, '', color="white", transform=ax.transAxes, fontsize=12, animated=True)
 
     animated_bodies = [star1, star2, planet1, planet2]
 
@@ -160,6 +169,8 @@ else:
     star2, = plt.plot([],[],color='yellow',marker='o',markersize=7,animated=True)
     planet1, = plt.plot([],[],color='blue',marker='o',markersize=5.5,animated=True)
     planet2, = plt.plot([],[],color='blue',marker='o',markersize=6,animated=True)
+
+    text = ax.text(0.1, 0.1, '', color="white", transform=ax.transAxes, fontsize=12, animated=True)
 
     animated_bodies = [star1, star2, planet1, planet2]
 
