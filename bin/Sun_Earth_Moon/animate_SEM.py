@@ -29,7 +29,7 @@ n = int(cfg.readline())
 total_steps = int(cfg.readline())
 number_of_dots = 150
 dt = 600
-skip_steps = 50          # the higher the faster the animation is played
+skip_steps = 1         # the higher the faster the animation is played
 
 if not focused:
     spread = 2.4e11
