@@ -27,15 +27,11 @@ All three of Kepler’s laws can be related back to and derived from a single eq
 This simplifies our code, as we don’t have to worry about calculating an initial step or two with a different method. This method starts with an initial position and velocity. It calculates initial acceleration using initial position, and calculates the next position using initial velocity, acceleration and position. Using this new position, it recalculates acceleration, and then using the new acceleration and the previous acceleration, and finds the new velocity. Then it calculates the next position, and so on. The precision of our simulation depends on the size of our timestep, and is accurate to the fourth derivative of position.
 
 \section{Verification and results}
-To verify the accuracy of our model, we simulated the Earth-Moon-Sun system and measure the period of the Moon's orbit around Earth. 
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=\textwidth]{sem}
-    \caption{The Moon orbiting the Earth}
-\end{figure}
-The average period in our simulation, defined as the time from one full moon to the next, was calculated to be 29.52 days. The real measured value is approximately 29.53 days. This gives us an error of less than 0.035\%, and we can therefore conclude that our model is accurate.
+\begin{center}
+\includegraphics[width=\textwidth]{sem}
+\end{center}
+To verify the accuracy of our model, we simulated the Earth-Moon-Sun system and measure the period of the Moon's orbit around Earth. The average period in our simulation, defined as the time from one full moon to the next, was calculated to be 29.52 days. The real measured value is approximately 29.53 days. This gives us an error of less than 0.035\%, and we can therefore conclude that our model is accurate.
 
-The system we studied with our model was one of our own creation. 
-
-
+The system we studied with our model was one of our own creation. In this way we were able to test specific cases. The binary system we studied is comprised of a star
+that is three times as massive as the Sun, and a star that is five times as massive as the Sun. They take a year to orbit each other. Their furthest separation is three and a half times the distance between the Sun and the Earth (or 3.5 astronomical units).\
 \end{document}
