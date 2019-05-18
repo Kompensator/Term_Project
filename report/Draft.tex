@@ -1,5 +1,7 @@
 \documentclass[12pt]{article}
 \usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
 
 \title{Introduction to Computer Science\\ Project report}
 \author{Ding Yi Zhang
@@ -25,6 +27,6 @@ All three of Kepler’s laws can be related back to and derived from a single eq
 This simplifies our code, as we don’t have to worry about calculating an initial step or two with a different method. This method calculates the position at the next timestep using the first derivative, velocity, and the second derivative, acceleration, while also updating those two values. The precision of our simulation depends on the size of our timestep, and is accurate to the fourth derivative of position.
 
 \section{Verification and results}
-To verify the accuracy of our model, we simulate the Earth-Moon-Sun system and measure the period of Earth’s orbit around the Sun. As this is a large-scale system, we expect an error of a few percent compared to the real value. Once we verify this, we can proceed to a simulation of the Centauri stars, and obtain real data for the orbit of a planet.
+To verify the accuracy of our model, we simulated the Earth-Moon-Sun system and measure the period of the Moon's orbit around Earth. 
 
 \end{document}
