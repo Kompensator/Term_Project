@@ -24,9 +24,17 @@ As previously mentioned, planets are much more difficult to detect than stars. T
 \section{Mathematical Models}
 All three of Kepler’s laws can be related back to and derived from a single equation; Newton’s universal law of gravity. This law is what makes the others true. Newton’s law simply gives the gravitational force, and therefore acceleration, felt by one object due to another. This means that with the right initial conditions, we can simulate the entire system using only universal gravity and kinematics equations; Kepler’s laws should hold, since they are based on universal gravity. The problem then becomes one of numerical integration, and calculating the acceleration,velocity and position of each object involved after a certain small timestep. For this we will use a modified, self-starting version of Verlet’s method: \[x_{n+1} = x_{n} + v_{n}dt + \frac{1}{2}a_{n}(dt)^{2}\]
 \[v_{n+1} = v_{n} + \frac{1}{2}(a_{n+1} + a_{n})dt\]
-This simplifies our code, as we don’t have to worry about calculating an initial step or two with a different method. This method calculates the position at the next timestep using the first derivative, velocity, and the second derivative, acceleration, while also updating those two values. The precision of our simulation depends on the size of our timestep, and is accurate to the fourth derivative of position.
+This simplifies our code, as we don’t have to worry about calculating an initial step or two with a different method. This method starts with an initial position and velocity. It calculates initial acceleration using initial position, and calculates the next position using initial velocity, acceleration and position. Using this new position, it recalculates acceleration, and then using the new acceleration and the previous acceleration, and finds the new velocity. Then it calculates the next position, and so on. The precision of our simulation depends on the size of our timestep, and is accurate to the fourth derivative of position.
 
 \section{Verification and results}
 To verify the accuracy of our model, we simulated the Earth-Moon-Sun system and measure the period of the Moon's orbit around Earth. 
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{sem}
+    \caption{The Moon orbiting the Earth}
+\end{figure}
+
+
 
 \end{document}
