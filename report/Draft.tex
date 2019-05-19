@@ -1,6 +1,8 @@
 \documentclass[12pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{hyperref}
 \graphicspath{ {./images/} }
 
 \title{Introduction to Computer Science\\ Project report}
@@ -27,11 +29,33 @@ All three of Kepler’s laws can be related back to and derived from a single eq
 This simplifies our code, as we don’t have to worry about calculating an initial step or two with a different method. This method starts with an initial position and velocity. It calculates initial acceleration using initial position, and calculates the next position using initial velocity, acceleration and position. Using this new position, it recalculates acceleration, and then using the new acceleration and the previous acceleration, and finds the new velocity. Then it calculates the next position, and so on. The precision of our simulation depends on the size of our timestep, and is accurate to the fourth derivative of position.
 
 \section{Verification and results}
-\begin{center}
-\includegraphics[width=\textwidth]{sem}
-\end{center}
+\begin{wrapfigure}{l}{0.5\textwidth}
+    \centering
+    \includegraphics[width=0.5\textwidth]{sem}
+    \caption{Earth in blue, Moon in yellow}
+\end{wrapfigure}
 To verify the accuracy of our model, we simulated the Earth-Moon-Sun system and measure the period of the Moon's orbit around Earth. The average period in our simulation, defined as the time from one full moon to the next, was calculated to be 29.52 days. The real measured value is approximately 29.53 days. This gives us an error of less than 0.035\%, and we can therefore conclude that our model is accurate.
 
-The system we studied with our model was one of our own creation. In this way we were able to test specific cases. The binary system we studied is comprised of a star
-that is three times as massive as the Sun, and a star that is five times as massive as the Sun. They take a year to orbit each other. Their furthest separation is three and a half times the distance between the Sun and the Earth (or 3.5 astronomical units).\
+The system we studied with our model was one of our own creation. 
+\begin{wrapfigure}{r}{0.35\textwidth} 
+    \centering
+    \includegraphics[width=0.35\textwidth]{binary1}
+    \caption{Planets in blue}
+\end{wrapfigure}
+In this way we were able to test specific cases. The binary system we studied is comprised of a starthat is three times as massive as the Sun, and a star that is five times as massive as the Sun. They take a year to orbit each other. Their furthest separation is three and a half times the distance between the Sun and the Earth (or 3.5 astronomical units). We placed two planets in orbit around them, one which orbits the more massive star, and the other that orbits the center of mass of the system. We ran this system for $1*10^9$ seconds, which equates to 31.7 years. From this we were able to draw a few conclusions. As can be seen in Figure 3, the planet orbiting one of the stars was ejected from the system. This is very common for planets that reside inside binary systems of relatively small size, 
+
+\begin{wrapfigure}{l}{0.35\textwidth} 
+    \centering
+    \includegraphics[width=0.35\textwidth]{report/images/binaryejected}
+    \caption{Planets in blue}
+\end{wrapfigure}
+like the one we studied.This is because the strong gravity of the second star, the one in yellow in this case, pulls the planet out of its proper orbit and causes it to fly out into space, or to collide with one of the stars. Any orbit within such small binaries is highly unstable. The second planet, however, did have a stable orbit. Its period was very high, as it achieved less than 4 and a quarter orbits in the 31.7 simulated years. We can conclude various things about this exoplanet from our simulation. While seasons on Earth depend primarily on the tilt of Earth's axis, the seasons and temperatures on this planet would depend on the relative positions of the two binary stars, and which one it is closest to. Since the orbit of these stars is markedly elliptical, the planet would probably experience high variations in temperature. This is turn could have drastic effects on any atmosphere that is present, as elements that compose it condense and then evaporate, depending on the season. While the planet is about eight times as far from its stars as the Earth is from the Sun, the binary stars are eight times as massive as the Sun; since luminosity is proportional to mass in main sequence stars like the Sun, we can suppose that the light levels on this alien planet would be about the same as on Earth. These would also have seasonal variations, however, due to the elliptical orbit of the stars. We can draw one more conclusion from our simulation: for much of the planet's year, it would be possible to see the double sunset, just like on Tatooine.
+\section{Bibliography}
+\begin{enumerate}
+    \item Gould, H, et al. “Numerical Integration of Newton's Equation of Motion.” PICUP, AAPT, 2007 
+    
+    \url{www.compadre.org/PICUP/resources/Numerical-Integration/}.
+
+    \item Dib, Rim. "Astrophysics Notes" Astrophysics, Dawson College, 2019
+\end{enumerate}
 \end{document}
