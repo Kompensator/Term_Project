@@ -9,11 +9,11 @@
 * Dependencies: Numpy and Matplotlib for Python 3 (Anaconda 3 installation recommended)
 * You may have to create an empty .data files for Verlet to write to it
 * run.sh and run.bat will simplify the entire compiling, simulating and animating process
-* To manually compile and run the code:
+* To manually compile and run the code (Sun Earth Moon system example):
 
-1. `javac VerletCollision.java`
-2. `java VerletCollision`
-3. `python animate_collision.py`
+1. `javac SunEarthMoon.java`
+2. `java SunEarthMoon`
+3. `python animate_SEM.py`
 
 We used Verlet's velocity method of numerical integration which can be found [here](https://www.compadre.org/PICUP/resources/Numerical-Integration/). The dt we used varied but was always below 1000. Acceleration was calculated using Newton's universal gravitation, and initial conditions were calculated using astrophysics equations, including Kepler's third law and derivations of Kepler's second law for velocity. 
 
